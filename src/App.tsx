@@ -7,7 +7,7 @@ import AnonymouslyLogin from "./auth/AnonymouslyLogin";
 const App: React.FC = () => {
   const [user, setUser] = useState(null);
 
-
+// This function is used for the logout
   const signOutUser = () => {
     auth.signOut()
       .then(() => {
@@ -18,6 +18,7 @@ const App: React.FC = () => {
       });
   };
 
+  // Here we are fetching auth users
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user: any) => {
       setUser(user);
@@ -39,12 +40,14 @@ const App: React.FC = () => {
                 Logout
               </button>
             </span>
+            {/* This is a main wrapper for the three notification button */}
             <div className="space-x-4">
               <NotificationButton message="Notification 1"  />
               <NotificationButton message="Notification 2"  />
               <NotificationButton message="Notification 3"  />
             </div>
           </div>
+          {/* Showing notification listing */}
           <NotificationList   />
         </>
       ) : (

@@ -14,10 +14,16 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID,
 };
 
+// Here the app is initialize to the firebase
 firebase.initializeApp(firebaseConfig);
+
+// We are using this for the auth of firebase services
 const auth = firebase.auth();
+
+// For firebase store 
 const firestoreApp = firebase.firestore();
 
+// We integrated the firebase emulator for this application
 if (window.location.hostname === "localhost") {
   auth.useEmulator("http://localhost:9099/");
   firestoreApp.useEmulator("localhost", 8080);

@@ -5,6 +5,7 @@ interface NotificationButtonProps {
   message: string;
 }
 
+// This is a component of notification button where the notification fires!
 const NotificationButton: React.FC<NotificationButtonProps> = ({ message }) => {
   return (
     <button

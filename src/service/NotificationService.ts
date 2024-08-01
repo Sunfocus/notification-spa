@@ -1,9 +1,6 @@
-import {
-  collection,
-  getDocs,
-} from "firebase/firestore";
 import { firestoreApp } from "../firebase/FirebaseConfig";
 
+// Adding a new doc to the firebase store
 export const sendNotification = async (message: String) => {
   var d1 = new Date();
   d1.toUTCString();
@@ -16,6 +13,7 @@ export const sendNotification = async (message: String) => {
   });
 };
 
+// Update the status for toast in the firebase
 export const markToastShown = async (id: string) => {
   await firestoreApp
     .collection("notifications")
@@ -23,23 +21,10 @@ export const markToastShown = async (id: string) => {
     .update({ toast: false });
 };
 
+// Update the status for mark as read in the firebase
 export const markAsRead = async (id: string) => {
   await firestoreApp
     .collection("notifications")
     .doc(id)
     .update({ read: true });
-};
-
-
-
-
-export const getNotifications = async () => {
-  const querySnapshot = await getDocs(
-    collection(firestoreApp, "notifications")
-  );
-  const notifications: any[] = [];
-  querySnapshot.forEach((doc) => {
-    notifications.push({ id: doc.id, ...doc.data() });
-  });
-  return notifications;
 };

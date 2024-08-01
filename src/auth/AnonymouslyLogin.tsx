@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { auth } from "../firebase/FirebaseConfig";
 
+// This is the login page for the anonymously users
 const AnonymouslyLogin: React.FC = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // This is for loading of the login button
 
+  // Here users are created in the firebase auth and logged in to our portal!
   const handleAnonymousLogin = () => {
     setLoading(true);
     setTimeout(() => {
@@ -13,7 +15,7 @@ const AnonymouslyLogin: React.FC = () => {
       setLoading(false);
     }, 2000);
   };
-  
+
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-cover bg-center">

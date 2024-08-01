@@ -5,13 +5,13 @@ import { BellFilled } from "@ant-design/icons";
 import { convertTimeToLocal } from "../../utils/Utility";
 import { markAsRead, markToastShown } from "../../service/NotificationService";
 
-
+// This is a component where all the listing is shown! and also a functionality of view
 const NotificationList: React.FC = () => {
   const [api, contextHolder] = notification.useNotification();
-  const [notifications, setNotifications] = useState<any[]>([]);
-  const [count, setCount] = useState(0);
+  const [notifications, setNotifications] = useState<any[]>([]); // Storing all notification
+  const [count, setCount] = useState(0); // This is used for the notification count
 
-
+  // This is used for the notification popup!
   const openNotification = (placement: any, data: any) => {
     api.info({
       message: (
@@ -27,8 +27,7 @@ const NotificationList: React.FC = () => {
     markToastShown(data?.id);
   };
 
-
-
+  // HEre we are fetching the all listing of the notifications 
   useEffect(() => {
     const unsubscribe = firestoreApp
       .collection("notifications")
